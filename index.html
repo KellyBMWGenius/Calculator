@@ -4,59 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Kelly BMW Lease & Finance Calculator</title>
-<style>
-/* ====== INLINED style.css (glossy light/dark) ====== */
-:root{
-  --bg:#dfe6ef; --page-accent: radial-gradient(1200px 600px at 20% -20%, #fff 10%, #e9eef6 60%, #e1e7f1 100%);
-  --card:#fff; --card-2:#f7f9fc; --text:#0f172a; --muted:#6b7280; --border:#e6ebf3;
-  --display-bg: linear-gradient(180deg,#0d1b2a 0%,#10253a 100%); --display-text:#f1f5f9;
-  --btn:#0fb3ff; --btn-2:#0ea5e9; --btnText:#fff; --focus:#38bdf8;
-  --shadow: 0 20px 40px rgba(15,23,42,.12), 0 4px 10px rgba(2,6,23,.06);
-  --inset: inset 0 1px 0 rgba(255,255,255,.7), inset 0 -1px 0 rgba(2,6,23,.08);
-}
-body.dark{
-  --bg:#0b0f16; --page-accent: radial-gradient(1200px 600px at 20% -20%, #0b0f16 0%, #0e141d 60%, #0b0f16 100%);
-  --card:#141a22; --card-2:#10161d; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2630;
-  --display-bg: linear-gradient(180deg,#0d2333 0%,#0f1f2b 100%); --display-text:#f8fafc;
-  --btn:#2ee6b8; --btn-2:#10b981; --btnText:#081018; --focus:#34d399;
-  --shadow: 0 20px 40px rgba(0,0,0,.45), 0 4px 10px rgba(0,0,0,.35);
-  --inset: inset 0 1px 0 rgba(255,255,255,.05), inset 0 -1px 0 rgba(0,0,0,.5);
-}
-*{box-sizing:border-box} html,body{margin:0}
-body{background:var(--page-accent),var(--bg);min-height:100svh;color:var(--text);
-  font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;letter-spacing:.2px}
-.topbar{max-width:1100px;margin:18px auto 10px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.topbar h1{margin:0;font-size:18px;font-weight:700;opacity:.95}
-.btn.secondary{background:linear-gradient(180deg,var(--btn-2),var(--btn));color:var(--btnText);border:none;border-radius:999px;padding:10px 18px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
-.btn.secondary:active{transform:translateY(1px)}
-.container{max-width:1100px;margin:0 auto 40px;padding:0 18px}
-.app{background:var(--card);border:1px solid var(--border);border-radius:28px;box-shadow:var(--shadow);overflow:clip}
-.display-strip{background:var(--display-bg);color:var(--display-text);padding:18px;border-bottom:1px solid var(--border)}
-.display-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.disclaimer{margin:0;opacity:.75;font-size:12px}
-.pad{padding:18px;background:var(--card)}
-.card{background:var(--card-2);border:1px solid var(--border);border-radius:18px;padding:16px;box-shadow:0 10px 20px rgba(2,6,23,.06)}
-.card h2{margin:0 0 12px;font-size:16px;font-weight:700;opacity:.95}
-.columns{display:grid;gap:16px;grid-template-columns:1fr}
-@media (min-width:900px){.columns{grid-template-columns:1fr 1fr}}
-.grid{display:grid;gap:12px;grid-template-columns:1fr 1fr}
-.grid.grid-3{grid-template-columns:repeat(3,1fr)}
-@media (max-width:640px){.grid,.grid.grid-3{grid-template-columns:1fr}}
-.field{display:flex;flex-direction:column;gap:6px}
-.field span{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.3px}
-.field input{background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(250,252,255,.65));color:var(--text);
-  border:1px solid var(--border);border-radius:12px;padding:12px 14px;outline:none;width:100%;box-shadow:var(--inset)}
-body.dark .field input{background:linear-gradient(180deg,rgba(20,26,34,.9),rgba(18,24,31,.7))}
-.field input:focus{border-color:var(--focus);box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 30%, transparent)}
-.btn{background:linear-gradient(180deg,var(--btn),var(--btn-2));color:var(--btnText);border:none;border-radius:18px;padding:12px 16px;
-  font-weight:800;letter-spacing:.3px;cursor:pointer;box-shadow:var(--shadow)}
-.btn:active{transform:translateY(1px)}
-hr{border:none;height:1px;background:var(--border);margin:16px 0}
-.outputs .row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--border)}
-.outputs .row:last-child{border-bottom:none}
-.outputs strong{font-size:28px;font-weight:800;letter-spacing:.3px}
-.small{font-size:12px;color:var(--muted)}
-</style>
+<link rel="stylesheet" href="style.css?v=5" />
 </head>
 <body class="light">
 <header class="topbar">
@@ -80,15 +28,15 @@ hr{border:none;height:1px;background:var(--border);margin:16px 0}
         <div class="grid grid-3">
           <label class="field">
             <span>MSRP</span>
-            <input id="msrp" inputmode="decimal" placeholder="$" />
+            <input id="msrp" inputmode="decimal" placeholder="$" autocomplete="off" />
           </label>
           <label class="field">
             <span>Discount</span>
-            <input id="discount" inputmode="decimal" placeholder="$" />
+            <input id="discount" inputmode="decimal" placeholder="$" autocomplete="off" />
           </label>
           <label class="field">
             <span>Sales Tax %</span>
-            <input id="taxPct" inputmode="decimal" placeholder="%" />
+            <input id="taxPct" inputmode="decimal" placeholder="%" autocomplete="off" />
           </label>
         </div>
       </section>
@@ -100,19 +48,19 @@ hr{border:none;height:1px;background:var(--border);margin:16px 0}
           <div class="grid">
             <label class="field">
               <span>Residual %</span>
-              <input id="residualPct" inputmode="decimal" placeholder="%" />
+              <input id="residualPct" inputmode="decimal" placeholder="%" autocomplete="off" />
             </label>
             <label class="field">
               <span>Money Factor</span>
-              <input id="moneyFactor" inputmode="decimal" placeholder="e.g. 0.00188" />
+              <input id="moneyFactor" inputmode="decimal" placeholder="e.g. 0.00188" autocomplete="off" />
             </label>
             <label class="field">
               <span>Rebates</span>
-              <input id="rebatesLease" inputmode="decimal" placeholder="$" />
+              <input id="rebatesLease" inputmode="decimal" placeholder="$" autocomplete="off" />
             </label>
             <label class="field">
               <span>Money Down</span>
-              <input id="downLease" inputmode="decimal" placeholder="$" />
+              <input id="downLease" inputmode="decimal" placeholder="$" autocomplete="off" />
             </label>
           </div>
           <button id="calcLease" class="btn">Calculate Lease</button>
@@ -130,23 +78,23 @@ hr{border:none;height:1px;background:var(--border);margin:16px 0}
           <div class="grid">
             <label class="field">
               <span>Term (months)</span>
-              <input id="termMonths" inputmode="numeric" placeholder="e.g. 60" />
+              <input id="termMonths" inputmode="numeric" placeholder="e.g. 60" autocomplete="off" />
             </label>
             <label class="field">
               <span>Rate % (APR)</span>
-              <input id="ratePct" inputmode="decimal" placeholder="%" />
+              <input id="ratePct" inputmode="decimal" placeholder="%" autocomplete="off" />
             </label>
             <label class="field">
               <span>Rebates</span>
-              <input id="rebatesFin" inputmode="decimal" placeholder="$" />
+              <input id="rebatesFin" inputmode="decimal" placeholder="$" autocomplete="off" />
             </label>
             <label class="field">
               <span>Money Down</span>
-              <input id="downFin" inputmode="decimal" placeholder="$" />
+              <input id="downFin" inputmode="decimal" placeholder="$" autocomplete="off" />
             </label>
             <label class="field">
               <span>Trade-In Value</span>
-              <input id="tradeIn" inputmode="decimal" placeholder="$" />
+              <input id="tradeIn" inputmode="decimal" placeholder="$" autocomplete="off" />
             </label>
           </div>
           <button id="calcFin" class="btn">Calculate Finance</button>
@@ -163,8 +111,7 @@ hr{border:none;height:1px;background:var(--border);margin:16px 0}
 </main>
 
 <script>
-/* ====== INLINED script.js (logic) ====== */
-// Constants (Ohio rules)
+/* ===== logic (unchanged, with formatters) ===== */
 const TERM_LEASE=36, ACQ_FEE=925, DOC_FEE=387, MF_MARKUP=0.0004, PLATE_FEE=75;
 const moneyRe=/[^0-9.\-]/g, percentRe=/[^0-9.\-]/g;
 const $=id=>document.getElementById(id);
@@ -176,18 +123,46 @@ const fmtMoneyCompact=x=>Math.abs(x-Math.round(x))<1e-9?`$${Math.round(x).toLoca
 const fmtPercentDisp=x=>Math.abs(x-Math.round(x))<1e-9?`${Math.round(x)}%`:`${x.toFixed(2)}%`;
 
 function setupFormatters(){
-  ["msrp","discount","rebatesLease","downLease","rebatesFin","downFin","tradeIn"].forEach(id=>{
-    $(id).addEventListener("blur",()=>{const v=parseMoney($(id).value);$(id).value=v?fmtMoneyCompact(v):"";});
+  const moneyIds=["msrp","discount","rebatesLease","downLease","rebatesFin","downFin","tradeIn"];
+  moneyIds.forEach(id=>{
+    const el=$(id); if(!el) return;
+    el.addEventListener("focus",()=>{el.dataset.justFocused="1"; try{el.select();}catch{}});
+    el.addEventListener("keydown",e=>{
+      if(el.dataset.justFocused==="1"){
+        if(e.key.length===1||e.key==="Backspace"||e.key==="Delete"){el.value=""; el.dataset.justFocused="0";}
+      }
+    });
+    el.addEventListener("blur",()=>{const v=parseMoney(el.value); el.value=v?fmtMoneyCompact(v):""; el.dataset.justFocused="0";});
   });
-  ["taxPct","residualPct","ratePct"].forEach(id=>{
-    $(id).addEventListener("blur",()=>{const v=parsePercent($(id).value);$(id).value=v?fmtPercentDisp(v):"";});
+
+  const pctIds=["taxPct","residualPct","ratePct"];
+  pctIds.forEach(id=>{
+    const el=$(id); if(!el) return;
+    el.addEventListener("focus",()=>{el.dataset.justFocused="1"; try{el.select();}catch{}});
+    el.addEventListener("keydown",e=>{
+      if(el.dataset.justFocused==="1"){
+        if(e.key.length===1||e.key==="Backspace"||e.key==="Delete"){el.value=""; el.dataset.justFocused="0";}
+      }
+    });
+    el.addEventListener("blur",()=>{const v=parsePercent(el.value); el.value=v?fmtPercentDisp(v):""; el.dataset.justFocused="0";});
   });
-  $("termMonths").addEventListener("blur",()=>{const n=parseIntOnly($("termMonths").value);$("termMonths").value=n?`${n} months`:"";});
+
+  const tm=$("termMonths");
+  if(tm){
+    tm.addEventListener("focus",()=>{tm.dataset.justFocused="1"; try{tm.select();}catch{}});
+    tm.addEventListener("keydown",e=>{
+      if(tm.dataset.justFocused==="1"){
+        if(e.key.length===1||e.key==="Backspace"||e.key==="Delete"){tm.value=""; tm.dataset.justFocused="0";}
+      }
+    });
+    tm.addEventListener("blur",()=>{const n=parseIntOnly(tm.value); tm.value=n?`${n} months`:""; tm.dataset.justFocused="0";});
+  }
 }
 
 function setupTheme(){
   const btn=$("themeToggle"), body=document.body;
-  btn.addEventListener("click",()=>{const dark=body.classList.toggle("dark");btn.textContent=dark?"Light":"Dark";});
+  if(!btn) return;
+  btn.addEventListener("click",()=>{const dark=body.classList.toggle("dark"); btn.textContent=dark?"Light":"Dark";});
 }
 
 function calcLease(){
@@ -195,23 +170,18 @@ function calcLease(){
   const residualPct=parsePercent($("residualPct").value)/100;
   const mfInput=parseFloat( ($("moneyFactor").value||"").replace(percentRe,"") )||0;
   const rebates=parseMoney($("rebatesLease").value), down=parseMoney($("downLease").value);
-
   if(msrp<=0 || residualPct<=0 || residualPct>=1){alert("Please check MSRP and Residual %.");return;}
   if(mfInput<0 || mfInput>0.02){alert("Money Factor looks off (e.g., 0.00188).");return;}
-
   const mfUsed=mfInput+MF_MARKUP, sellingPrice=msrp-discount;
   const capReduction=rebates+down;
   const C17=sellingPrice+ACQ_FEE+DOC_FEE-capReduction;
   const C18=msrp*residualPct;
   const C19=(C17+C18)*mfUsed;
   const C20=(C17-C18)/TERM_LEASE;
-  const C21=C19+C20; // pre-tax (not displayed)
-
+  const C21=C19+C20; // pre-tax
   const C23=C21*taxPct, C24=C23*TERM_LEASE, C26=C17+C24;
   const E19=(C26+C18)*mfUsed, E20=(C26-C18)/TERM_LEASE, E21=E19+E20; // with tax
-
   const taxOnDown=down*taxPct, das=E21+down+taxOnDown+PLATE_FEE;
-
   $("leaseResidualOut").textContent=fmtMoney(C18);
   $("leasePaymentOut").textContent=fmtMoney(E21);
   $("leaseDasOut").textContent=fmtMoney(das);
@@ -221,23 +191,17 @@ function calcFinance(){
   const msrp=parseMoney($("msrp").value), discount=parseMoney($("discount").value), taxPct=parsePercent($("taxPct").value)/100;
   const termMonths=parseIntOnly($("termMonths").value), ratePct=parsePercent($("ratePct").value)/100;
   const rebates=parseMoney($("rebatesFin").value), down=parseMoney($("downFin").value), tradeIn=parseMoney($("tradeIn").value);
-
   if(msrp<=0 || termMonths<=0){alert("Please check MSRP and Term.");return;}
   if(ratePct<0){alert("Rate % cannot be negative.");return;}
-
   const sellingPrice=msrp-discount+DOC_FEE;
   const taxableBase=(sellingPrice-tradeIn)+down+rebates;
   const totalTax=taxableBase*taxPct;
-
   const principal=(sellingPrice-tradeIn-down-rebates)+totalTax;
   if(principal<0){alert("Computed loan amount is negative. Reduce cash/trade/rebates.");return;}
-
   let payment;
   if(ratePct>0){const r=ratePct/12, pow=(1+r)**termMonths; payment=principal*(r*pow)/(pow-1);}
   else{payment=principal/termMonths;}
-
   const das=payment+PLATE_FEE+down;
-
   $("loanAmountOut").textContent=fmtMoney(principal);
   $("finPaymentOut").textContent=fmtMoney(payment);
   $("finDasOut").textContent=fmtMoney(das);
