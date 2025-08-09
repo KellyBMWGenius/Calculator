@@ -90,13 +90,8 @@ function setupFormatters(){
 
 // ===== Theme toggle (unchanged) =====
 function setupTheme(){
-  const btn = document.getElementById("themeToggle");
-  if(!btn) return;
-  const body = document.body;
-  btn.addEventListener("click", ()=>{
-    const dark = body.classList.toggle("dark");
-    btn.textContent = dark ? "Light" : "Dark";
-  });
+  const btn=$("themeToggle"), body=document.body;
+  btn.addEventListener("click",()=>{const dark=body.classList.toggle("dark");btn.textContent=dark?"Light":"Dark";});
 }
 
 // ===== Lease math (same logic as before) =====
