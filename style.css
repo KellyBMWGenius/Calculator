@@ -218,3 +218,33 @@ hr{border:none; height:1px; background:var(--border); margin:16px 0}
 #calcLease, #calcFin{
   margin-top: var(--space-3);
 }
+
+/* ==== SPACING FIXES (robust + DPI/zoom friendly) ==== */
+
+/* Fluid spacing scale */
+:root{
+  --stack-gap: clamp(0.9rem, 1.2vw, 1.5rem);
+  --btn-gap: 1rem;
+}
+
+/* 1) Space between Vehicle & Tax bubble and the Lease/Finance row */
+.app .pad > .card:first-of-type {           /* Vehicle & Tax card */
+  margin-bottom: var(--stack-gap) !important;
+}
+.app .pad > .columns {                      /* the row with Lease + Finance */
+  margin-top: var(--stack-gap) !important;
+  gap: var(--stack-gap) !important;         /* also controls space between Lease & Finance (mobile stack) */
+}
+
+/* 2) Space above the Calculate buttons (both desktop & mobile) */
+#calcLease,
+#calcFin {
+  margin-top: var(--btn-gap) !important;
+  display: inline-block;                    /* ensure margin applies */
+}
+
+/* If your markup has the button right after the inputs grid, this polishes it */
+.card .grid + #calcLease,
+.card .grid + #calcFin {
+  margin-top: calc(var(--btn-gap) + 0.25rem) !important;
+}
