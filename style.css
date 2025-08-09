@@ -1,84 +1,109 @@
+/* =========== THEME TOKENS =========== */
 :root{
-  --bg: #eef2f7;
+  --bg: #dfe6ef;
+  --page-accent: radial-gradient(1200px 600px at 20% -20%, #ffffff 10%, #e9eef6 60%, #e1e7f1 100%);
   --card: #ffffff;
-  --text: #111;
+  --card-2: #f7f9fc;
+  --text: #0f172a;
   --muted:#6b7280;
-  --border:#e5e7eb;
-  --btn:#0ea5e9;
-  --btnText:#fff;
-  --btnSecondary:#a3a3a3;
-  --btnSecondaryText:#fff;
+  --border:#e6ebf3;
+
+  --display-bg: linear-gradient(180deg, #0d1b2a 0%, #10253a 100%);
+  --display-text:#f1f5f9;
+
+  --btn: #0fb3ff;
+  --btn-2:#0ea5e9;
+  --btnText:#ffffff;
+
+  --focus:#38bdf8;
+  --shadow: 0 20px 40px rgba(15,23,42,.12), 0 4px 10px rgba(2,6,23,.06);
+  --inset: inset 0 1px 0 rgba(255,255,255,.7), inset 0 -1px 0 rgba(2,6,23,.08);
 }
 body.dark{
-  --bg:#0f1218;
-  --card:#151a22;
-  --text:#eaecef;
+  --bg:#0b0f16;
+  --page-accent: radial-gradient(1200px 600px at 20% -20%, #0b0f16 0%, #0e141d 60%, #0b0f16 100%);
+  --card:#141a22;
+  --card-2:#10161d;
+  --text:#e5e7eb;
   --muted:#9ca3af;
-  --border:#232733;
-  --btn:#10b981;
-  --btnText:#0f1218;
-  --btnSecondary:#10b981;
-  --btnSecondaryText:#0f1218;
+  --border:#1f2630;
+
+  --display-bg: linear-gradient(180deg, #0d2333 0%, #0f1f2b 100%);
+  --display-text:#f8fafc;
+
+  --btn:#2ee6b8;
+  --btn-2:#10b981;
+  --btnText:#081018;
+
+  --focus:#34d399;
+  --shadow: 0 20px 40px rgba(0,0,0,.45), 0 4px 10px rgba(0,0,0,.35);
+  --inset: inset 0 1px 0 rgba(255,255,255,.05), inset 0 -1px 0 rgba(0,0,0,.5);
 }
 
+/* =========== BASE =========== */
 *{box-sizing:border-box}
 html,body{margin:0}
 body{
-  background:var(--bg);
+  background: var(--page-accent), var(--bg);
+  min-height:100svh;
   color:var(--text);
-  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+  font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  letter-spacing:.2px;
 }
 
+/* top bar like iOS title + toggle */
 .topbar{
-  display:flex; gap:12px; align-items:center; justify-content:space-between;
-  padding:16px 20px;
+  max-width: 1100px; margin: 18px auto 10px; padding: 0 18px;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
 }
-.topbar h1{margin:0; font-size:18px; font-weight:700}
-.container{max-width:1100px; margin:0 auto; padding:0 16px 30px}
-.disclaimer{color:var(--muted); margin:4px 0 14px}
+.topbar h1{margin:0; font-size:18px; font-weight:700; opacity:.95}
+.btn.secondary{
+  background: linear-gradient(180deg, var(--btn-2), var(--btn));
+  color: var(--btnText); border:none; border-radius:999px;
+  padding:10px 18px; font-weight:700; cursor:pointer;
+  box-shadow: var(--shadow);
+}
+.btn.secondary:active{transform:translateY(1px);}
 
+/* main device card */
+.container{
+  max-width: 1100px; margin: 0 auto 40px; padding: 0 18px;
+}
+.app{
+  background: var(--card);
+  border:1px solid var(--border);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  overflow: clip;
+}
+
+/* faux display strip like the mock */
+.display-strip{
+  background: var(--display-bg);
+  color: var(--display-text);
+  padding: 18px;
+  border-bottom: 1px solid var(--border);
+}
+.display-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:14px;
+}
+.disclaimer{
+  margin:0; opacity:.75; font-size:12px;
+}
+
+/* cards area */
+.pad{ padding: 18px; background: var(--card); }
 .card{
-  background:var(--card);
+  background: var(--card-2);
   border:1px solid var(--border);
   border-radius:18px; padding:16px;
-  box-shadow:0 1px 2px rgba(0,0,0,.04);
+  box-shadow: 0 10px 20px rgba(2,6,23,.06);
 }
-.card h2{margin:0 0 10px; font-size:16px}
+.card h2{margin:0 0 12px; font-size:16px; font-weight:700; opacity:.95}
 
+/* layout */
 .columns{display:grid; gap:16px; grid-template-columns:1fr}
-@media (min-width: 900px){
-  .columns{grid-template-columns:1fr 1fr}
-}
+@media (min-width: 900px){ .columns{grid-template-columns:1fr 1fr} }
 
 .grid{display:grid; gap:12px; grid-template-columns:1fr 1fr}
-.grid.grid-3{grid-template-columns:repeat(3,1fr)}
-@media (max-width: 640px){
-  .grid, .grid.grid-3{grid-template-columns:1fr}
-}
-
-.field{display:flex; flex-direction:column; gap:6px}
-.field span{font-size:12px; color:var(--muted)}
-.field input{
-  background:transparent; color:var(--text);
-  border:1px solid var(--border); border-radius:10px;
-  padding:10px 12px; outline:none; width:100%;
-}
-
-.btn{
-  background:var(--btn); color:var(--btnText);
-  border:none; border-radius:14px; padding:10px 14px;
-  font-weight:600; cursor:pointer;
-}
-.btn.secondary{
-  background:var(--btnSecondary); color:var(--btnSecondaryText);
-}
-.btn:active{transform:translateY(1px)}
-
-hr{border:none; height:1px; background:var(--border); margin:14px 0}
-
-.outputs .row{
-  display:flex; justify-content:space-between; align-items:center;
-  padding:8px 0; border-bottom:1px dashed var(--border);
-}
-.outputs .row:last-child{border-bottom:none}
-.outputs strong{font-size:20px}
+.grid.grid-3{grid-template-columns:repeat(3,
