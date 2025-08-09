@@ -1,109 +1,183 @@
-/* =========== THEME TOKENS =========== */
+/* ===== THEME TOKENS (first UI vibe) ===== */
 :root{
-  --bg: #dfe6ef;
-  --page-accent: radial-gradient(1200px 600px at 20% -20%, #ffffff 10%, #e9eef6 60%, #e1e7f1 100%);
-  --card: #ffffff;
-  --card-2: #f7f9fc;
+  /* Light */
+  --page-bg: #e9edf3;                    /* slightly darker than before */
+  --page-accent: radial-gradient(1200px 600px at 20% -20%, #ffffff 10%, #eef3fa 60%, #e9edf3 100%);
+
+  --app-bg: #ffffff;                      /* outer “calculator bubble” */
+  --app-border: #e5e7eb;
+
+  --card: #ffffff;                        /* inner bubbles */
+  --card-2: #f8fafc;
+
   --text: #0f172a;
   --muted:#6b7280;
-  --border:#e6ebf3;
+  --border:#e5e7eb;
 
-  --display-bg: linear-gradient(180deg, #0d1b2a 0%, #10253a 100%);
-  --display-text:#f1f5f9;
-
-  --btn: #0fb3ff;
+  --btn:#0fb3ff;                          /* buttons (light mode) */
   --btn-2:#0ea5e9;
   --btnText:#ffffff;
 
   --focus:#38bdf8;
-  --shadow: 0 20px 40px rgba(15,23,42,.12), 0 4px 10px rgba(2,6,23,.06);
-  --inset: inset 0 1px 0 rgba(255,255,255,.7), inset 0 -1px 0 rgba(2,6,23,.08);
+
+  --shadow: 0 22px 48px rgba(15,23,42,.12), 0 6px 16px rgba(2,6,23,.08);
+  --inset: inset 0 1px 0 rgba(255,255,255,.7), inset 0 -1px 0 rgba(2,6,23,.06);
 }
+
 body.dark{
-  --bg:#0b0f16;
-  --page-accent: radial-gradient(1200px 600px at 20% -20%, #0b0f16 0%, #0e141d 60%, #0b0f16 100%);
-  --card:#141a22;
-  --card-2:#10161d;
-  --text:#e5e7eb;
+  /* Dark */
+  --page-bg:#0f1218;
+  --page-accent: radial-gradient(1200px 600px at 20% -20%, #0f1218 0%, #121823 60%, #0f1218 100%);
+
+  --app-bg:#151a22;
+  --app-border:#232733;
+
+  --card:#151a22;
+  --card-2:#0f141c;
+
+  --text:#eaecef;
   --muted:#9ca3af;
-  --border:#1f2630;
+  --border:#232733;
 
-  --display-bg: linear-gradient(180deg, #0d2333 0%, #0f1f2b 100%);
-  --display-text:#f8fafc;
-
-  --btn:#2ee6b8;
-  --btn-2:#10b981;
-  --btnText:#081018;
+  /* more subtle green for dark buttons (per your note) */
+  --btn:#1cc4b0;
+  --btn-2:#14b8a6;
+  --btnText:#0c1318;
 
   --focus:#34d399;
-  --shadow: 0 20px 40px rgba(0,0,0,.45), 0 4px 10px rgba(0,0,0,.35);
-  --inset: inset 0 1px 0 rgba(255,255,255,.05), inset 0 -1px 0 rgba(0,0,0,.5);
+
+  --shadow: 0 24px 56px rgba(0,0,0,.45), 0 8px 18px rgba(0,0,0,.35);
+  --inset: inset 0 1px 0 rgba(255,255,255,.06), inset 0 -1px 0 rgba(0,0,0,.5);
 }
 
-/* =========== BASE =========== */
+/* ===== BASE ===== */
 *{box-sizing:border-box}
 html,body{margin:0}
 body{
-  background: var(--page-accent), var(--bg);
-  min-height:100svh;
-  color:var(--text);
-  font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--page-accent), var(--page-bg);
+  color: var(--text);
+  min-height: 100svh;
+  font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
   letter-spacing:.2px;
 }
 
-/* top bar like iOS title + toggle */
+/* Top bar */
 .topbar{
-  max-width: 1100px; margin: 18px auto 10px; padding: 0 18px;
+  max-width:1100px; margin:18px auto 10px; padding:0 18px;
   display:flex; align-items:center; justify-content:space-between; gap:12px;
 }
-.topbar h1{margin:0; font-size:18px; font-weight:700; opacity:.95}
-.btn.secondary{
-  background: linear-gradient(180deg, var(--btn-2), var(--btn));
-  color: var(--btnText); border:none; border-radius:999px;
-  padding:10px 18px; font-weight:700; cursor:pointer;
-  box-shadow: var(--shadow);
-}
-.btn.secondary:active{transform:translateY(1px);}
+.topbar h1{margin:0; font-size:18px; font-weight:800}
 
-/* main device card */
-.container{
-  max-width: 1100px; margin: 0 auto 40px; padding: 0 18px;
-}
+/* Container + outer “calculator bubble” */
+.container{max-width:1100px; margin:0 auto 40px; padding:0 18px}
 .app{
-  background: var(--card);
-  border:1px solid var(--border);
-  border-radius: 28px;
+  background: var(--app-bg);
+  border:1px solid var(--app-border);
+  border-radius:28px;
   box-shadow: var(--shadow);
   overflow: clip;
 }
 
-/* faux display strip like the mock */
+/* Display strip (title/disclaimer band) */
 .display-strip{
-  background: var(--display-bg);
-  color: var(--display-text);
-  padding: 18px;
-  border-bottom: 1px solid var(--border);
+  padding:18px;
+  color: var(--text);
+  border-bottom:1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,0));
 }
-.display-grid{
-  display:grid; grid-template-columns:1fr 1fr; gap:14px;
+body.dark .display-strip{
+  color:#eaecef;
+  background: linear-gradient(180deg, rgba(21,26,34,.7), rgba(21,26,34,0));
 }
-.disclaimer{
-  margin:0; opacity:.75; font-size:12px;
-}
+.display-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.disclaimer{margin:0; opacity:.8; font-size:12px; text-align:right}
 
-/* cards area */
-.pad{ padding: 18px; background: var(--card); }
+/* Inner padding that holds the three sub-bubbles */
+.pad{ padding:18px; }
+
+/* Sub-bubbles (cards) */
 .card{
-  background: var(--card-2);
+  background: var(--card);
   border:1px solid var(--border);
-  border-radius:18px; padding:16px;
+  border-radius:18px;
+  padding:16px;
   box-shadow: 0 10px 20px rgba(2,6,23,.06);
 }
-.card h2{margin:0 0 12px; font-size:16px; font-weight:700; opacity:.95}
+body.dark .card{ background: var(--card-2); }
 
-/* layout */
+.card h2{margin:0 0 12px; font-size:16px; font-weight:800; opacity:.95}
+
+/* ===== LAYOUT (Vehicle & Tax + Lease/Finance) ===== */
+
+/* Columns: Lease & Finance side-by-side on desktop, stacked on mobile */
 .columns{display:grid; gap:16px; grid-template-columns:1fr}
-@media (min-width: 900px){ .columns{grid-template-columns:1fr 1fr} }
 
+/* SPACING YOU ASKED FOR:
+   Push the Lease/Finance row DOWN from the Vehicle & Tax sub-bubble (desktop + mobile) */
+.columns{ margin-top: 16px; }       /* space between vehicle&tax and the next row */
+@media (min-width: 900px){
+  .columns{ grid-template-columns:1fr 1fr; }
+}
+
+/* When stacked (mobile), add space between successive cards inside .columns if needed */
+@media (max-width: 899.98px){
+  .columns .card + .card{ margin-top: 16px; }
+}
+
+/* ===== FORMS ===== */
 .grid{display:grid; gap:12px; grid-template-columns:1fr 1fr}
-.grid.grid-3{grid-template-columns:repeat(3,
+.grid.grid-3{grid-template-columns:repeat(3,1fr)}
+@media (max-width:640px){ .grid, .grid.grid-3{grid-template-columns:1fr} }
+
+.field{display:flex; flex-direction:column; gap:6px}
+.field span{font-size:12px; color:var(--muted); font-weight:600; letter-spacing:.3px}
+.field input{
+  background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(248,250,252,.7));
+  color: var(--text);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px 14px; outline:none; width:100%;
+  box-shadow: var(--inset);
+  font-size:15px;
+}
+body.dark .field input{
+  background: linear-gradient(180deg, rgba(20,26,34,.9), rgba(18,24,31,.7));
+}
+.field input:focus{
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--focus) 28%, transparent);
+}
+
+/* ===== BUTTONS ===== */
+.btn{
+  background: linear-gradient(180deg, var(--btn), var(--btn-2));
+  color: var(--btnText);
+  border:none; border-radius:18px; padding:12px 16px;
+  font-weight:800; letter-spacing:.3px; cursor:pointer;
+  box-shadow: var(--shadow);
+}
+.btn:active{ transform: translateY(1px); }
+
+/* Theme toggle button in topbar */
+.btn.secondary{
+  background: linear-gradient(180deg, var(--btn-2), var(--btn));
+  color: var(--btnText); border-radius:999px; padding:10px 18px;
+}
+
+/* SPACING YOU ASKED FOR:
+   breathing room between inputs and the Calculate buttons */
+.card .btn{ margin-top: 14px; margin-bottom: 2px; }
+
+/* ===== SEPARATORS & OUTPUTS ===== */
+hr{border:none; height:1px; background:var(--border); margin:16px 0}
+
+.outputs .row{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 0; border-bottom:1px dashed var(--border);
+}
+.outputs .row:last-child{border-bottom:none}
+.outputs strong{font-size:26px; font-weight:800; letter-spacing:.3px}
+
+/* Small text helpers */
+#Title{font-size:18px; font-weight:700}
+#Disclaimer, .small{font-size:12px; color:var(--muted)}
