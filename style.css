@@ -181,3 +181,40 @@ hr{border:none; height:1px; background:var(--border); margin:16px 0}
 /* Small text helpers */
 #Title{font-size:18px; font-weight:700}
 #Disclaimer, .small{font-size:12px; color:var(--muted)}
+
+/* === Responsive, “fungible” spacing === */
+
+/* 1) A tiny spacing scale + a fluid stack gap */
+:root{
+  --space-3: 1rem;         /* ~16px at default zoom */
+  --space-4: 1.25rem;
+  --stack-gap: clamp(0.9rem, 1.2vw, 1.5rem); /* grows a bit on large screens */
+}
+
+/* 2) Put real gaps into the layouts instead of ad-hoc margins */
+.columns{
+  display: grid;
+  grid-template-columns: 1fr;           /* mobile stack */
+  gap: var(--stack-gap);                 /* space between Lease & Finance cards */
+}
+@media (min-width: 900px){
+  .columns{
+    grid-template-columns: 1fr 1fr;      /* desktop side-by-side */
+    gap: var(--stack-gap);               /* column + row gap */
+  }
+}
+
+/* 3) Space between Vehicle & Tax card and the Lease/Finance row */
+.pad > .card:first-child{                /* your Vehicle & Tax “bubble” */
+  margin-bottom: var(--stack-gap);
+}
+
+/* 4) Clean spacing above the Calculate buttons, tied to the form grid */
+.card .grid + .btn{                      /* when a .btn follows the inputs grid */
+  margin-top: var(--space-4);
+}
+
+/* If any button isn’t immediately after .grid, this is a safe fallback */
+#calcLease, #calcFin{
+  margin-top: var(--space-3);
+}
