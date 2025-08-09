@@ -1,0 +1,84 @@
+:root{
+  --bg: #eef2f7;
+  --card: #ffffff;
+  --text: #111;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --btn:#0ea5e9;
+  --btnText:#fff;
+  --btnSecondary:#a3a3a3;
+  --btnSecondaryText:#fff;
+}
+body.dark{
+  --bg:#0f1218;
+  --card:#151a22;
+  --text:#eaecef;
+  --muted:#9ca3af;
+  --border:#232733;
+  --btn:#10b981;
+  --btnText:#0f1218;
+  --btnSecondary:#10b981;
+  --btnSecondaryText:#0f1218;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+}
+
+.topbar{
+  display:flex; gap:12px; align-items:center; justify-content:space-between;
+  padding:16px 20px;
+}
+.topbar h1{margin:0; font-size:18px; font-weight:700}
+.container{max-width:1100px; margin:0 auto; padding:0 16px 30px}
+.disclaimer{color:var(--muted); margin:4px 0 14px}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px; padding:16px;
+  box-shadow:0 1px 2px rgba(0,0,0,.04);
+}
+.card h2{margin:0 0 10px; font-size:16px}
+
+.columns{display:grid; gap:16px; grid-template-columns:1fr}
+@media (min-width: 900px){
+  .columns{grid-template-columns:1fr 1fr}
+}
+
+.grid{display:grid; gap:12px; grid-template-columns:1fr 1fr}
+.grid.grid-3{grid-template-columns:repeat(3,1fr)}
+@media (max-width: 640px){
+  .grid, .grid.grid-3{grid-template-columns:1fr}
+}
+
+.field{display:flex; flex-direction:column; gap:6px}
+.field span{font-size:12px; color:var(--muted)}
+.field input{
+  background:transparent; color:var(--text);
+  border:1px solid var(--border); border-radius:10px;
+  padding:10px 12px; outline:none; width:100%;
+}
+
+.btn{
+  background:var(--btn); color:var(--btnText);
+  border:none; border-radius:14px; padding:10px 14px;
+  font-weight:600; cursor:pointer;
+}
+.btn.secondary{
+  background:var(--btnSecondary); color:var(--btnSecondaryText);
+}
+.btn:active{transform:translateY(1px)}
+
+hr{border:none; height:1px; background:var(--border); margin:14px 0}
+
+.outputs .row{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:8px 0; border-bottom:1px dashed var(--border);
+}
+.outputs .row:last-child{border-bottom:none}
+.outputs strong{font-size:20px}
