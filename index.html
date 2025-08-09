@@ -4,103 +4,57 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Kelly BMW Lease & Finance Calculator</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=2" />
 </head>
 <body class="light">
+  <!-- Top bar with theme toggle -->
   <header class="topbar">
-    <h1>Kelly BMW Lease & Finance Calculator</h1>
+    <h1>Kelly BMW Lease &amp; Finance Calculator</h1>
     <button id="themeToggle" class="btn secondary">Dark</button>
   </header>
 
+  <!-- Main device-style card -->
   <main class="container">
-    <p class="disclaimer">For display only — not an official quote.</p>
-
-    <!-- Universal Inputs -->
-    <section class="card">
-      <h2>Vehicle &amp; Tax</h2>
-      <div class="grid grid-3">
-        <label class="field">
-          <span>MSRP</span>
-          <input id="msrp" inputmode="decimal" placeholder="$" />
-        </label>
-        <label class="field">
-          <span>Discount</span>
-          <input id="discount" inputmode="decimal" placeholder="$" />
-        </label>
-        <label class="field">
-          <span>Sales Tax %</span>
-          <input id="taxPct" inputmode="decimal" placeholder="%" />
-        </label>
+    <div class="app">
+      <!-- Faux display strip (title + disclaimer) -->
+      <div class="display-strip">
+        <div class="display-grid">
+          <h2 style="margin:0;font-weight:700;">Calculator</h2>
+          <p class="disclaimer" style="text-align:right;">For display only — not an official quote.</p>
+        </div>
       </div>
-    </section>
 
-    <div class="columns">
-      <!-- Lease -->
-      <section class="card">
-        <h2>Lease</h2>
-        <div class="grid">
-          <label class="field">
-            <span>Residual %</span>
-            <input id="residualPct" inputmode="decimal" placeholder="%" />
-          </label>
-          <label class="field">
-            <span>Money Factor</span>
-            <input id="moneyFactor" inputmode="decimal" placeholder="e.g. 0.00188" />
-          </label>
-          <label class="field">
-            <span>Rebates</span>
-            <input id="rebatesLease" inputmode="decimal" placeholder="$" />
-          </label>
-          <label class="field">
-            <span>Money Down</span>
-            <input id="downLease" inputmode="decimal" placeholder="$" />
-          </label>
-        </div>
-        <button id="calcLease" class="btn">Calculate Lease</button>
-        <hr />
-        <div class="outputs">
-          <div class="row"><span>Residual Value</span><strong id="leaseResidualOut">—</strong></div>
-          <div class="row"><span>Monthly Payment</span><strong id="leasePaymentOut">—</strong></div>
-          <div class="row"><span>Due at Signing</span><strong id="leaseDasOut">—</strong></div>
-        </div>
-      </section>
+      <!-- Padded content area -->
+      <div class="pad">
 
-      <!-- Finance -->
-      <section class="card">
-        <h2>Finance</h2>
-        <div class="grid">
-          <label class="field">
-            <span>Term (months)</span>
-            <input id="termMonths" inputmode="numeric" placeholder="e.g. 60" />
-          </label>
-          <label class="field">
-            <span>Rate % (APR)</span>
-            <input id="ratePct" inputmode="decimal" placeholder="%" />
-          </label>
-          <label class="field">
-            <span>Rebates</span>
-            <input id="rebatesFin" inputmode="decimal" placeholder="$" />
-          </label>
-          <label class="field">
-            <span>Money Down</span>
-            <input id="downFin" inputmode="decimal" placeholder="$" />
-          </label>
-          <label class="field">
-            <span>Trade-In Value</span>
-            <input id="tradeIn" inputmode="decimal" placeholder="$" />
-          </label>
-        </div>
-        <button id="calcFin" class="btn">Calculate Finance</button>
-        <hr />
-        <div class="outputs">
-          <div class="row"><span>Total Loan Amount</span><strong id="loanAmountOut">—</strong></div>
-          <div class="row"><span>Monthly Payment</span><strong id="finPaymentOut">—</strong></div>
-          <div class="row"><span>Due at Signing</span><strong id="finDasOut">—</strong></div>
-        </div>
-      </section>
-    </div>
-  </main>
+        <!-- ===== Vehicle & Tax (universal) ===== -->
+        <section class="card">
+          <h2>Vehicle &amp; Tax</h2>
+          <div class="grid grid-3">
+            <label class="field">
+              <span>MSRP</span>
+              <input id="msrp" inputmode="decimal" placeholder="$" />
+            </label>
+            <label class="field">
+              <span>Discount</span>
+              <input id="discount" inputmode="decimal" placeholder="$" />
+            </label>
+            <label class="field">
+              <span>Sales Tax %</span>
+              <input id="taxPct" inputmode="decimal" placeholder="%" />
+            </label>
+          </div>
+        </section>
 
-  <script src="script.js"></script>
-</body>
-</html>
+        <div class="columns">
+          <!-- ===== Lease column ===== -->
+          <section class="card">
+            <h2>Lease</h2>
+            <div class="grid">
+              <label class="field">
+                <span>Residual %</span>
+                <input id="residualPct" inputmode="decimal" placeholder="%" />
+              </label>
+              <label class="field">
+                <span>Money Factor</span>
+                <input id="mo
