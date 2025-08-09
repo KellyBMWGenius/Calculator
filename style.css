@@ -107,3 +107,12 @@ hr{border:none;height:1px;background:var(--border);margin:16px 0}
 .outputs .row:last-child{border-bottom:none}
 .outputs strong{font-size:28px;font-weight:800;letter-spacing:.3px}
 .small{font-size:12px;color:var(--muted)}
+
+/* Soften button text on desktop screens */
+@media (min-width: 900px) {
+  .btn {
+    font-weight: 600; /* was 800 */
+    letter-spacing: 0.1px; /* was .3px */
+  }
+}
+
