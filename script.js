@@ -90,8 +90,29 @@ function setupFormatters(){
 
 // ===== Theme toggle (unchanged) =====
 function setupTheme(){
-  const btn=$("themeToggle"), body=document.body;
-  btn.addEventListener("click",()=>{const dark=body.classList.toggle("dark");btn.textContent=dark?"Light":"Dark";});
+  const btn = document.getElementById("themeToggle");
+  if (!btn) return; // safety
+
+  const KEY = "kbmw_theme";
+  const body = document.body;
+
+  // Read saved theme or fall back to OS preference
+  let saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (_) {}
+  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const startDark = saved ? (saved === "dark") : prefersDark;
+
+  // Apply initial state
+  body.classList.toggle("dark", startDark);
+  btn.textContent = startDark ? "Light" : "Dark";
+
+  // Toggle + persist
+  btn.addEventListener("click", () => {
+    const nowDark = !body.classList.contains("dark");
+    body.classList.toggle("dark", nowDark);
+    btn.textContent = nowDark ? "Light" : "Dark";
+    try { localStorage.setItem(KEY, nowDark ? "dark" : "light"); } catch (_) {}
+  });
 }
 
 // ===== Lease math (same logic as before) =====
