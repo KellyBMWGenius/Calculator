@@ -1,16 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script>
-  (function(){
-    try{
-      var saved = localStorage.getItem("kbmw_theme");
-      var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-      var dark = saved ? (saved === "dark") : prefersDark;
-      if (dark) document.addEventListener("DOMContentLoaded", function(){ document.body.classList.add("dark"); });
-    }catch(e){}
-  })();
-</script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Kelly BMW Lease & Finance Calculator</title>
